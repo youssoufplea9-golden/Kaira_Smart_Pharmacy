@@ -1,0 +1,20 @@
+# Frontend build artifacts
+/frontend/node_modules/
+/frontend/dist/
+
+# Python and PyInstaller build artifacts
+__pycache__/
+*.py[cod]
+/sync/build/
+/sync/dist/
+/sync/*.spec
+
+# Deployment binaries
+kaira_sync.exe
+nssm.exe
+
+# Local environment files; keep example templates versioned
+.env
+.env.*
+!.env.example
+!.env.*.example

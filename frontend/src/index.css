@@ -1,0 +1,206 @@
+@import 'tailwindcss';
+
+/* ── Default theme tokens linked to CSS variables ────────────────────────── */
+@theme {
+  --color-kaira-bg:      var(--kaira-bg);
+  --color-kaira-surface: var(--kaira-surface);
+  --color-kaira-card:    var(--kaira-card);
+  --color-kaira-border:  var(--kaira-border);
+  --color-kaira-cyan:    var(--kaira-cyan);
+  --color-kaira-purple:  var(--kaira-purple);
+  --color-kaira-emerald: var(--kaira-emerald);
+  --color-kaira-rose:    var(--kaira-rose);
+  --color-kaira-amber:   var(--kaira-amber);
+  --color-kaira-text:    var(--kaira-text);
+  --color-kaira-muted:   var(--kaira-muted);
+  --font-inter: 'Inter', sans-serif;
+}
+
+/* ── Theme: Sombre (default dark) ──────────────────────────────────────────── */
+:root[data-theme="sombre"], :root {
+  --kaira-bg:      #0a0e1a;
+  --kaira-surface: #111827;
+  --kaira-card:    rgba(17, 24, 39, 0.75);
+  --kaira-border:  rgba(6, 182, 212, 0.15);
+  --kaira-cyan:    #06b6d4;
+  --kaira-purple:  #8b5cf6;
+  --kaira-emerald: #10b981;
+  --kaira-rose:    #f43f5e;
+  --kaira-amber:   #f59e0b;
+  --kaira-text:    #e2e8f0;
+  --kaira-muted:   #94a3b8;
+  --kaira-grad-a:  #06b6d4;
+  --kaira-grad-b:  #8b5cf6;
+  --kaira-glow:    rgba(244, 63, 94, 0.4);
+  --kaira-shadow:  rgba(0, 0, 0, 0.3);
+}
+
+/* ── Theme: Clair (light) ───────────────────────────────────────────────────── */
+:root[data-theme="clair"] {
+  --kaira-bg:      #f1f5f9;
+  --kaira-surface: #ffffff;
+  --kaira-card:    rgba(255, 255, 255, 0.85);
+  --kaira-border:  rgba(14, 165, 233, 0.2);
+  --kaira-cyan:    #0284c7;
+  --kaira-purple:  #7c3aed;
+  --kaira-emerald: #059669;
+  --kaira-rose:    #e11d48;
+  --kaira-amber:   #d97706;
+  --kaira-text:    #0f172a;
+  --kaira-muted:   #64748b;
+  --kaira-grad-a:  #0284c7;
+  --kaira-grad-b:  #7c3aed;
+  --kaira-glow:    rgba(225, 29, 72, 0.2);
+  --kaira-shadow:  rgba(0, 0, 0, 0.08);
+}
+
+/* ── Theme: Océan ───────────────────────────────────────────────────────────── */
+:root[data-theme="ocean"] {
+  --kaira-bg:      #020c18;
+  --kaira-surface: #051628;
+  --kaira-card:    rgba(5, 22, 40, 0.8);
+  --kaira-border:  rgba(34, 211, 238, 0.15);
+  --kaira-cyan:    #22d3ee;
+  --kaira-purple:  #38bdf8;
+  --kaira-emerald: #2dd4bf;
+  --kaira-rose:    #fb7185;
+  --kaira-amber:   #fbbf24;
+  --kaira-text:    #e0f2fe;
+  --kaira-muted:   #7dd3fc;
+  --kaira-grad-a:  #22d3ee;
+  --kaira-grad-b:  #38bdf8;
+  --kaira-glow:    rgba(251, 113, 133, 0.35);
+  --kaira-shadow:  rgba(0, 0, 0, 0.4);
+}
+
+/* ── Theme: Sakura ──────────────────────────────────────────────────────────── */
+:root[data-theme="sakura"] {
+  --kaira-bg:      #120818;
+  --kaira-surface: #1e0f2a;
+  --kaira-card:    rgba(30, 15, 42, 0.8);
+  --kaira-border:  rgba(232, 121, 249, 0.15);
+  --kaira-cyan:    #e879f9;
+  --kaira-purple:  #c084fc;
+  --kaira-emerald: #4ade80;
+  --kaira-rose:    #fb7185;
+  --kaira-amber:   #fda4af;
+  --kaira-text:    #fce7f3;
+  --kaira-muted:   #d8b4fe;
+  --kaira-grad-a:  #e879f9;
+  --kaira-grad-b:  #f472b6;
+  --kaira-glow:    rgba(232, 121, 249, 0.4);
+  --kaira-shadow:  rgba(0, 0, 0, 0.4);
+}
+
+
+
+body {
+  background-color: var(--kaira-bg);
+  color: var(--kaira-text);
+  font-family: var(--font-inter);
+}
+
+.glass-card {
+  background-color: var(--kaira-card);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--kaira-border);
+  border-radius: 1rem;
+  box-shadow: 0 4px 30px var(--kaira-shadow);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: scale(1.01);
+  filter: brightness(1.05);
+}
+
+.gradient-text {
+  background: linear-gradient(to right, var(--kaira-grad-a), var(--kaira-grad-b));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 5px var(--kaira-glow), 0 0 10px var(--kaira-glow);
+    opacity: 1;
+  }
+  50% {
+    box-shadow: 0 0 2px var(--kaira-glow), 0 0 5px var(--kaira-glow);
+    opacity: 0.6;
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s infinite ease-in-out;
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-up {
+  animation: slide-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+
+.animate-shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--kaira-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--kaira-surface);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--kaira-muted);
+}
+
+/* ── Desktop layout ──────────────────────────────────────────────────────── */
+
+/* Sidebar active item glow */
+.sidebar-active-cyan   { box-shadow: inset 0 0 12px rgba(6, 182, 212, 0.08); }
+.sidebar-active-purple { box-shadow: inset 0 0 12px rgba(139, 92, 246, 0.08); }
+.sidebar-active-amber  { box-shadow: inset 0 0 12px rgba(245, 158, 11, 0.08); }
+
+/* Smooth layout transition when switching modes */
+.layout-transition {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Full-height flex body */
+html, body, #root {
+  height: 100%;
+}
+
+/* Desktop scrollable main content */
+.desktop-main {
+  height: calc(100vh - 56px); /* viewport minus header */
+  overflow-y: auto;
+}
+
